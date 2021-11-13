@@ -1,0 +1,11 @@
+def pca(X):
+    X_norm = (X - X.mean()) / X.std()
+    cov = np.cov(X.T)
+    U,S,V = la.svd(cov)
+    return U
+    
+def project_data (X, U, K):
+    return np.dot(X,U[:,:K])
+    
+def recover_data(Z,U,K):
+    return np.dot(Z,U[:,:K].T) 
